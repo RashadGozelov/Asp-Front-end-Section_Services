@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Services>
+@{
+    ViewData["Title"] = "Service";
+}
+
+<h2>Index</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <a asp-action="Create" title="Create" class="btn btn-primary">Create</a>
+                <div class="card-body">
+
+                    <h5 class="card-title m-b-0">Services</h5>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Icon</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int count = 1;
+                        }
+                        @foreach (var skill in Model)
+                        {
+                        <tr>
+                            <th scope="row">@count</th>
+                            <td>@skill.Title</td>
+                            <td>@skill.Description</td>
+                            <td>@skill.Iconclass</td>
+                            <td>
+                                <a asp-action="Detail" title="Detail" asp-route-id="@skill.Id" class="btn btn-success">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a asp-action="Update" title="Update" asp-route-id="@skill.Id" class="btn btn-danger">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-action="Delete" title="Delete" asp-route-id="@skill.Id" class="btn btn-warning">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                            count++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
